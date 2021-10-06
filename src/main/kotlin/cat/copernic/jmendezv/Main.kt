@@ -2,9 +2,15 @@ package cat.copernic.jmendezv
 
 import kotlin.math.floor
 
+/**
+ * Implementació i tests de tota mena
+ */
+
 data class Point(val x: Double, val y: Double)
 
 /*
+* Índice de masa corporal
+*
 * imc = weight / height^2
 * */
 fun imc(weight: Double, height: Double): Double = TODO("Pending")
@@ -17,19 +23,21 @@ fun imc(weight: Double, height: Double): Double = TODO("Pending")
 fun secondDegreeEquation(a: Double, b: Double, c: Double): Pair<Double, Double> = TODO("Pending")
 
 /*
+* Cálculo de la distancia entre dos puntos
+*
 * distance = √[(x2 – x1)^2 +(y2 – y1)^2]
 * */
 fun distance(p1: Point, p2: Point): Double = TODO("Pending")
 
 /*
-* Pendiente de una recta
+* Cáculo de la pendiente de una recta
 *
 * slope = (y2 – y1) / (x2 – x1)
 * */
 fun slope(p1: Point, p2: Point): Double = TODO("Pending")
 
 /*
-* Punto medio de una recta
+* Cálculo del punto medio de una recta
 *
 * midpoint = ((x1+x2)/2, (y1+y2)/2)
 * */
@@ -47,11 +55,17 @@ fun displayScore(score: Double) {
     }
 }
 
-fun findMaxAndMin(list: List<Int>): Pair<Int, Int> = TODO("Pending")
+/*
+* Encuentra el menor y mayor
+*
+* [2,3,1,4,7,6,5] = (1,7)
+* [] = IllegalArgumentException
+* */
+fun findMinAndMax(list: List<Int>): Pair<Int, Int> = TODO("Pending")
 
 /*
 *
-* El punto más cercano a point
+* Cálculo del punto más cercano a point. points es una lista de tipo Point
 *
 * */
-fun closest(point: Point, pointA: Point, pointB: Point): Point = TODO("Pending")
+fun closest(point: Point, vararg points: Point): Point = TODO("Pending")
