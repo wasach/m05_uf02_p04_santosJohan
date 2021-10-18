@@ -9,7 +9,7 @@ import kotlin.math.sqrt
  * Optimització de codi amb JUnit
  */
 
-data class Point(val x: Double, val y: Double)
+data class Punto(val x: Double, val y: Double)
 
 /*
 *
@@ -19,7 +19,7 @@ data class Point(val x: Double, val y: Double)
 *
 * imc = weight / height^2
 * */
-fun imc(weight: Double, height: Double): Double = weight / height.pow(2)
+fun IMC(weight: Double, height: Double): Double = weight / height.pow(2)
 
 /*
 * Verificació de codi
@@ -28,7 +28,7 @@ fun imc(weight: Double, height: Double): Double = weight / height.pow(2)
 *
 * (-b ± sqrt(b^2 - 4ac)) / 2a
 * */
-fun secondDegreeEquation(a: Double, b: Double, c: Double): Pair<Double, Double> =
+fun equSegundoGrado(a: Double, b: Double, c: Double): Pair<Double, Double> =
     Pair((-b + sqrt(b.pow(2 - 4 * a * c) / 2 * a)), (-b - sqrt(b.pow(2 - 4 * a * c) / 2 * a)))
 
 /*
@@ -38,7 +38,7 @@ fun secondDegreeEquation(a: Double, b: Double, c: Double): Pair<Double, Double> 
 *
 * distance = √[(x2 – x1)^2 + (y2 – y1)^2]
 * */
-fun distance(p1: Point, p2: Point): Double =
+fun distanciaEntre2Puntos(p1: Punto, p2: Punto): Double =
     sqrt((p1.x - p2.x).pow(2) + (p1.y - p2.y).pow(2))
 
 /*
@@ -48,7 +48,7 @@ fun distance(p1: Point, p2: Point): Double =
 *
 * slope = (y2 – y1) / (x2 – x1)
 * */
-fun slope(p1: Point, p2: Point): Double = (p2.y - p1.y) / (p2.x - p1.x)
+fun Pendiente(p1: Punto, p2: Punto): Double = (p2.y - p1.y) / (p2.x - p1.x)
 
 /*
 * Verificació de codi
@@ -57,14 +57,14 @@ fun slope(p1: Point, p2: Point): Double = (p2.y - p1.y) / (p2.x - p1.x)
 *
 * midpoint = ((x1+x2)/2, (y1+y2)/2)
 * */
-fun midPoint(p1: Point, p2: Point): Point =
-    Point((p1.x + p2.x) / 2, (p1.y + p2.y) / 2)
+fun puntoMedio(p1: Punto, p2: Punto): Punto =
+    Punto((p1.x + p2.x) / 2, (p1.y + p2.y) / 2)
 
 /*
 * Verificació de codi
 *
 * */
-fun displayScore(score: Double): String {
+fun calificacion(score: Double): String {
     val roundedScore = floor(score * 100) / 100
     return when (roundedScore) {
         in 0.0..4.99 -> "No supera"
@@ -84,7 +84,7 @@ fun displayScore(score: Double): String {
 * [2,3,1,4,7,6,5] = (1,7)
 * [] = IllegalArgumentException
 * */
-fun findMinAndMax(list: List<Int>): Pair<Int, Int> {
+fun maxMin(list: List<Int>): Pair<Int, Int> {
     if (list.isEmpty()) throw IllegalArgumentException("Empty list")
     val listSorted = list.sorted()
     return Pair(listSorted.first(), listSorted.last())
@@ -96,12 +96,12 @@ fun findMinAndMax(list: List<Int>): Pair<Int, Int> {
 * Cálculo del punto más cercano a point. points es una lista de tipo Point
 *
 * */
-fun closest(point: Point, vararg points: Point): Point {
-    var p: Point = points.first()
-    var distance = distance(point, p)
+fun masCercano(point: Punto, vararg points: Punto): Punto {
+    var p: Punto = points.first()
+    var distance = distanciaEntre2Puntos(point, p)
 
     for (currentPoint in points) {
-        val currentDistance = distance(point, currentPoint)
+        val currentDistance = distanciaEntre2Puntos(point, currentPoint)
         if (currentDistance < distance) {
             distance = currentDistance
         }
