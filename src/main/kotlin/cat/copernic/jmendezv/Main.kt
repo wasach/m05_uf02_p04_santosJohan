@@ -29,7 +29,10 @@ fun IMC(weight: Double, height: Double): Double = weight / height.pow(2)
 * (-b ± sqrt(b^2 - 4ac)) / 2a
 * */
 fun equSegundoGrado(a: Double, b: Double, c: Double): Pair<Double, Double> =
-    Pair((-b + sqrt(b.pow(2 - 4 * a * c) / 2 * a)), (-b - sqrt(b.pow(2 - 4 * a * c) / 2 * a)))
+    Pair(
+        (-b + sqrt(b.pow(2 )- 4 * a * c) / 2 * a),
+        (-b - sqrt(b.pow(2 )- 4 * a * c) / 2 * a)
+    )
 
 /*
 * Verificació de codi
@@ -39,7 +42,7 @@ fun equSegundoGrado(a: Double, b: Double, c: Double): Pair<Double, Double> =
 * distance = √[(x2 – x1)^2 + (y2 – y1)^2]
 * */
 fun distanciaEntre2Puntos(p1: Punto, p2: Punto): Double =
-    sqrt((p1.x - p2.x).pow(2) + (p1.y - p2.y).pow(2))
+    sqrt( (p2.x - p1.x).pow(2) + (p2.y - p1.y).pow(2) )
 
 /*
 * Verificació de codi
@@ -58,7 +61,7 @@ fun Pendiente(p1: Punto, p2: Punto): Double = (p2.y - p1.y) / (p2.x - p1.x)
 * midpoint = ((x1+x2)/2, (y1+y2)/2)
 * */
 fun puntoMedio(p1: Punto, p2: Punto): Punto =
-    Punto((p1.x + p2.x) / 2, (p1.y + p2.y) / 2)
+    Punto( ((p1.x + + p2.x) /2 ), ((p1.y + + p2.y) /2 ) )
 
 /*
 * Verificació de codi
@@ -97,7 +100,8 @@ fun maxMin(list: List<Int>): Pair<Int, Int> {
 *
 * */
 fun masCercano(point: Punto, vararg points: Punto): Punto {
-    var p: Punto = points.first()
+    if (points.isEmpty()) throw IllegalArgumentException("Empty list")
+    val p: Punto = points.first()
     var distance = distanciaEntre2Puntos(point, p)
 
     for (currentPoint in points) {
